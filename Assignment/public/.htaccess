@@ -1,0 +1,15 @@
+
+#htaccess file for root index.php
+#Manages links so that they appear in a user friendly way without hard to read symbols
+
+Options -MultiViews
+RewriteEngine On
+
+RewriteBase /Assignment/public
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteRule ^(.*)$ index.php?url=$1 [QSA]
+RewriteRule ^([^/]+)/(Products)/(.+)$ index.php?url=$1&category=$3 [QSA]
+RewriteRule ^([^/]+)/(ParticularProduct)/(.+)$ index.php?url=$1&productid=$3 [QSA]
